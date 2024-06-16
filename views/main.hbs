@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+    </head>
+
+    <body class=" bg-info-subtle">
+        <header>
+            <h1 class="text-primary fw-bold text-center m-2">MongoDb CURD Operation</h1>
+            <div class=" text-center"> {{msg}}</div>
+           
+            <!-- place navbar here -->
+        </header>
+        <main>
+
+          {{#if edit_id}}
+            
+
+
+
+            <div class="p-2 d-flex justify-content-center"  >
+
+                <div  style="width: 450px;">
+
+
+                     <h3 class=" fw-bold">Edit Details</h3>
+
+         <form action="/update/{{edit_id}}" method="post"  class=" form-control p-3 rounded rounded-4 ">
+           
+             <div class=" mt-2">
+                 <label for="" class="mb-1">Name</label>
+                 <input type="text" name="Name" value="{{edit_book.Name}}"   class="form-control">
+             </div>
+  
+             <div class=" mt-2">
+                 <label for=""  class="mb-1">Age</label>
+                 <input type="text" name="Age" value="{{edit_book.Age}}"    class="form-control">
+             </div>
+  
+             <div class=" mt-2">
+                 <label for=""  class="mb-1">Email</label>
+                 <input type="text" name="Email"  value="{{edit_book.Email}}"  class="form-control">
+             </div>
+           
+              <div class=" mt-2 mb-2">
+                 <input type="submit" class=" btn btn-primary">
+              </div>
+
+         </form>
+         
+                </div>
+
+               
+         </div>
+
+
+             
+         {{else}}
+            <div   class=" justify-content-center d-flex ">
+
+                <div style="width: 450px;">
+                 <h3 class=" fw-bold">Create Details</h3>
+
+            <form action="/submit" method="post"  class=" form-control p-3 rounded rounded-4 ">
+              
+                <div class=" mt-2">
+                    <label for=""  class="mb-1">Name</label>
+                    <input type="text" name="Name" class="form-control">
+                </div>
+     
+                <div class=" mt-2">
+                    <label for=""  class="mb-1">Age</label>
+                    <input type="text" name="Age" class="form-control">
+                </div>
+     
+                <div class=" mt-2">
+                    <label for=""  class="mb-1">Email</label>
+                    <input type="text" name="Email" class="form-control">
+                </div>
+              
+                 <div class=" mt-2">
+                    <input type="submit" class=" btn btn-primary">
+                 </div>
+
+            </form>
+                </div>
+                
+
+            </div>
+            
+            {{/if}}
+
+             <div class=" d-flex justify-content-center mt-4">
+                     <ul>
+                 {{#each  details }}
+                <li class="mt-4 nav-link "> {{this.Name}} - {{this.Age}} - {{this.Email}} - <a href="/?edit_id={{this._id}}"><button class=" btn btn-primary" >Edit</button></a> <a href="/?delete_id={{this._id}}" onclick="return confirm('Are you sure Delete')"   > <button class=" btn btn-primary" > Delete </button> </a>  </li>
+                  {{/each}}
+            </ul>
+
+             </div>
+
+          
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
